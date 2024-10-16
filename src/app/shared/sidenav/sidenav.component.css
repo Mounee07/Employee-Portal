@@ -1,0 +1,16 @@
+.sidenav {
+    width: 20px;
+    height: 100vh;
+    background-color: #0d1a58;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 15px;
+  }
+  nav a {
+    color: white;
+    display: block;
+    padding: 10px 0;
+  }
+  

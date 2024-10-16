@@ -1,0 +1,44 @@
+.main-container {
+    display: flex;
+  }
+  
+  app-sidenav {
+    width: 60px;
+  }
+  
+  .content {
+    flex-grow: 1;
+    padding: 20px;
+  }
+  .dashboard-container {
+    padding: 20px;
+  }
+  
+  
+  .tab-group {
+    margin: 20px 0;
+  }
+  
+  .filters-container {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 8px;     /* Slightly rounded corners */
+  }
+  
+  .status-bar {
+    margin-top: 12px;
+    background-color: #f3efef;
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    width: 540px;
+  }
+  body {
+    background-color: white !important;
+  }
+  .mrgnleft195px{
+    margin-top: 55px;
+  }

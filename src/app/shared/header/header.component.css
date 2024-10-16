@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  background-color: #0d1a58;
+  color: white;
+  height: 60px;
+  margin-top: 0; /* Adjust margins if needed */
+  margin-right: 0; /* Adjust margins if needed */
+  position: fixed; /* Change position to fixed */
+  top: 0; /* Position at the top of the viewport */
+  left: 0; /* Position on the left side */
+  right: 0; /* Extend to the right side */
+  z-index: 1000 !important; /* Ensure it stays above other content */
+}
