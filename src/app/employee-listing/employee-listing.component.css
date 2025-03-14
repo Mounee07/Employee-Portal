@@ -1,0 +1,142 @@
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    background-color: #f5f7fa;
+  }
+  
+  .dashboard-content {
+    flex-grow: 1;
+    padding: 90px;
+    overflow: auto;
+  }
+  
+  .section-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1e3a8a;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .filter-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+  
+    input {
+      width: 20%;
+      padding: 15px 45px 15px 20px; 
+      border-radius: 25px;
+      border: 1px solid #ccc;
+      transition: all 0.3s ease-in-out;
+      font-size: 16px;
+  
+      &:focus {
+        border-color: #1e3a8a;
+        box-shadow: 0px 0px 10px rgba(30, 58, 138, 0.2);
+        outline: none;
+      }
+    }
+  
+    .search-icon {
+      position: absolute;
+      right: 39%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s ease-in-out;
+  
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  
+  
+  .table-container {
+    max-width: 900px;
+    margin: auto;
+    overflow-x: auto;
+  }
+  
+  .custom-table {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  
+    th {
+      background-color: #1e3a8a;
+      color: white;
+      font-weight: bold;
+      padding: 12px;
+      font-size: 20px;
+    }
+  
+    td {
+      padding: 10px;
+      font-size: 16px;
+    }
+  
+    tr:nth-child(even) {
+      background-color: #f1f5f9;
+    }
+  
+    tr:hover {
+      background-color: #e2e8f0;
+      transition: 0.3s ease;
+    }
+  }
+  
+  .custom-paginator {
+    display: flex;
+    justify-content: center;
+    background-color: #f5f7fa;
+    margin-left: 347px;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #8ba1e5;
+  
+    .mat-mdc-paginator-container {
+      border-radius: 12px;
+      background-color: #f5f7fa;
+    }
+  
+    button {
+      border-radius: 8px;
+      color: white;
+      transition: 0.3s ease-in-out;
+  
+      &:hover {
+        background-color: #8ba1e5;
+      }
+    }
+  }
+  .mat-mdc-paginator-outer-container{
+    margin-left: 25% !important;
+    font-size: 15px !important;
+  }
+  .delete-icon {
+    width: 30px;
+    object-fit: contain;
+    margin-top: 13px;
+    border-radius: 23px;
+  }
+  .addemp{
+    width: 30px;
+    object-fit: contain;
+    margin-top: 13px;
+    border-radius: 23px;
+  }
+.addemptxt{
+    margin-left: 72%;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-family: cursive;
+    color: #1e3a8a;
+    cursor: pointer;
+}

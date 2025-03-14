@@ -3,9 +3,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 15px;
-  background-color: #0d1a58;
+  background-color: #1e3a8a;
   color: white;
-  height: 60px;
+  height: 70px;
   margin-top: 0; /* Adjust margins if needed */
   margin-right: 0; /* Adjust margins if needed */
   position: fixed; /* Change position to fixed */
@@ -13,4 +13,28 @@
   left: 0; /* Position on the left side */
   right: 0; /* Extend to the right side */
   z-index: 1000 !important; /* Ensure it stays above other content */
+
+
+  h2 {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .title-logo {
+    width: 260px;
+    height: 60px;
+    margin-right: 10px;
+    margin-top: 15px;
+    margin-left: 5px;
+  }
+  .list-logo{
+    width: 50px;
+    height: 56px;
+    margin-right: 10px;
+    margin-top: 15px;
+    margin-left: 5px;
+  }
 }
+

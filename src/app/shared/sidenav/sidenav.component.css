@@ -1,16 +1,55 @@
 .sidenav {
-    width: 20px;
-    height: 100vh;
-    background-color: #0d1a58;
-    color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 15px;
-  }
-  nav a {
-    color: white;
-    display: block;
-    padding: 10px 0;
-  }
-  
+  width: 60px;
+  height: 100vh;
+  background-color: #1e3a8a;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 15px;
+}
+
+nav a {
+  color: white;
+  display: block;
+  padding: 10px 0;
+  position: relative;
+  text-decoration: none;
+}
+
+.nav-icon, .add-icon, .dash-icon {
+  width: 62px;
+  height: 51px;
+  object-fit: contain;
+  border-radius: 23px;
+  transition: background-color 0.3s ease;
+}
+
+/* Active State */
+nav a.active .nav-icon,
+nav a.active .add-icon,
+nav a.active .dash-icon {
+  background-color: white; /* Highlight active icon */
+  border-radius: 50%; /* Circular shape */
+}
+
+/* Hover State */
+nav a:hover .nav-icon,
+nav a:hover .add-icon,
+nav a:hover .dash-icon {
+  background-color: rgba(255, 255, 255, 0.1); /* Light hover effect */
+  border-radius: 50%;
+}
+
+/* Spacing */
+.nav-icon {
+  margin-top: 115px;
+}
+
+.add-icon {
+  margin-top: 13px;
+}
+
+.dash-icon {
+  margin-top: 13px;
+}

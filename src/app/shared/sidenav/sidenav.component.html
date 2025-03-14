@@ -1,7 +1,13 @@
 <aside class="sidenav">
-  <img src="../../../assets/star.png" alt="" class="star-icon" />
-  <img src="../../../assets/vessel.webp" alt="" class="vessel-icon" />
-    <nav>
-      <!-- Add other links here -->
-    </nav>
-  </aside>
+  <nav>
+    <a [routerLink]="'/employee-listing'" [ngClass]="{'active': isActive('/employee-listing')}">
+      <img src="../../../assets/totalep.png" alt="Employee Listing" class="nav-icon">
+    </a>
+    <a [routerLink]="'/add-employee'" [ngClass]="{'active': isActive('/add-employee')}">
+      <img src="../../../assets/addep.png" alt="Add Employee" class="add-icon">
+    </a>
+    <a [routerLink]="'/dashboard'" [ngClass]="{'active': isActive('/dashboard')}">
+      <img src="../../../assets/emplist.png" alt="Dashboard" class="dash-icon">
+    </a>
+  </nav>
+</aside>

@@ -1,249 +1,37 @@
 <app-header></app-header>
-<div class="main-container">
+<div class="dashboard-container">
   <app-sidenav></app-sidenav>
-  <div class="content">
-  <h2 class="mrgnleft195px">Action Summary</h2>
-  <div class="breadcrumb mrgnlefttop195px10px">
-    <span>LPSQ</span>
-    <span>&gt;</span>
-    <span>Action Summary</span>
-    <span class="star">*</span>
-  </div>
-
-  <div class="toggle-container">
-    <div class="line"></div>
-    <mat-button-toggle-group [(ngModel)]="selectedAction" class="toggle-group width300height40 ">
-      <mat-button-toggle
-      class="mrgnleft10px"
-        value="followup"
-        [ngClass]="{'active-toggle': selectedAction === 'followup', 'inactive-toggle': selectedAction !== 'followup'}">
-        Followup Action
-      </mat-button-toggle>
-      <mat-button-toggle
-        value="workflow"
-        [ngClass]="{'active-toggle': selectedAction === 'workflow', 'inactive-toggle': selectedAction !== 'workflow'}">
-        Workflow Action
-      </mat-button-toggle>
-    </mat-button-toggle-group>
-    <div class="line"></div>
-  </div>
-  
-
-  <div class="filters-container">
-    <!-- Radio Buttons -->
-    <mat-radio-group aria-label="Select action type">
-      <mat-radio-button value="office">Office</mat-radio-button>
-      <mat-radio-button value="vessel">Vessel</mat-radio-button>
-    </mat-radio-group>
-
-    <!-- Toggle Button -->
-    <mat-slide-toggle>My Vessel</mat-slide-toggle>
-
-    <!-- Date Selectors -->
-    <mat-form-field appearance="outline">
-      <mat-label>Date</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let option of dateOptions" [value]="option">
-          {{option}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <!-- Report Type Select -->
-    <mat-form-field appearance="outline">
-      <mat-label>Report Type</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let option of reportTypes" [value]="option">
-          {{option}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    
-    <mat-form-field appearance="outline">
-      <mat-label>Action</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let option of actions" [value]="option">
-          {{option}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    
-    <mat-form-field appearance="outline">
-      <mat-label>From Date</mat-label>
-      <input matInput [matDatepicker]="fromPicker" placeholder="Choose a date">
-      <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
-      <mat-datepicker #fromPicker></mat-datepicker>
-    </mat-form-field>
-    
-    <mat-form-field appearance="outline">
-      <mat-label>To Date</mat-label>
-      <input matInput [matDatepicker]="toPicker" placeholder="Choose a date">
-      <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
-      <mat-datepicker #toPicker></mat-datepicker>
-    </mat-form-field>
-    
-
-    <!-- Buttons -->
-    <button mat-icon-button color="primary" aria-label="Search">
-      <mat-icon>search</mat-icon>
-    </button>
-    <button mat-icon-button color="primary" aria-label="Filter">
-      <mat-icon>filter_list</mat-icon>
-    </button>
-    <button mat-icon-button color="primary" aria-label="Settings">
-      <mat-icon>tune</mat-icon>
-    </button>
-  </div>
-
-  <!-- Status info -->
-  <div class="status-bar">
-    <p>All > Status = Cancel > Created date Valid from 02-May-2023 to 02-May-2024</p>
-  </div>
-  <div class="cards-container">
-    <!-- Card 1 -->
-    <mat-card class="dashboard-card">
-      <div class="card-content">
-        <!-- Left side: Chart -->
-        <div class="chart-container">
-          <apx-chart [series]="pieChartOptions.series"
-                     [chart]="pieChartOptions.chart"
-                     [labels]="pieChartOptions.labels"
-                     [responsive]="pieChartOptions.responsive"
-                     [title]="pieChartOptions.title"
-                     [dataLabels]="pieChartOptions.dataLabels"
-                     [tooltip]="pieChartOptions.tooltip">
-          </apx-chart>
-        </div>
-        
-        <!-- Right side: Information -->
-      </div>
-    </mat-card>
-    
-    <mat-card class="dashboard-cardd">
-      <div class="card-header">
-        <span class="total">Total Findings</span>
-        <mat-icon>domain</mat-icon> <!-- Icon for card 1 -->
-      </div>
-      <div class="card-content">
-        <h2 class="count">370</h2>
-        <p class="increase percent">
-          <mat-icon>arrow_upward</mat-icon> 10% increase in findings YTD
-        </p>
-      </div>
-    </mat-card>
-  
-    <!-- Card 2 -->
-    <mat-card class="dashboard-cardd">
-      <div class="card-header">
-        <span class="total">Reports not Linked</span>
-        <mat-icon>description</mat-icon> <!-- Icon for card 2 -->
-      </div>
-      <div class="card-content">
-        <h2 class="count">1,270</h2>
-        <p class="decrease percent">
-          <mat-icon>arrow_downward</mat-icon> 7.3% count decreased
-        </p>
-      </div>
-    </mat-card>
-  
-    <!-- Card 3 -->
-    <mat-card class="dashboard-cardd">
-      <div class="card-header">
-        <span class="total">Due in</span>
-        <mat-icon>event</mat-icon> <!-- Icon for card 3 -->
-      </div>
-      <div class="card-content">
-        <h2 class="count">32</h2>
-        <p class="increase percent">
-          <mat-icon>warning</mat-icon> 5.5% count increasing yearly
-        </p>
-      </div>
-    </mat-card>
-  </div>
-  <div class="mat-elevation-z8">
-    <div class="table-header">
-      <span class="record-count">Total Records: {{ dataSource.data.length }}</span>
-      <mat-form-field appearance="outline" class="search-field">
-        <mat-label>Search Data</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Search" />
-      </mat-form-field>
+  <div class="dashboard-content">
+    <h2 class="section-title">Employee Details</h2>
+    <div class="filter-container">
+      <input matInput (input)="onFilterChange($event)" placeholder="Search by name or date ">
+      <img src="../../assets/search.png" class="search-icon">
     </div>
-  
-    <table mat-table [dataSource]="dataSource" matSort class="mat-table">
-      <!-- Checkbox Column -->
-      <ng-container matColumnDef="select">
-        <th mat-header-cell *matHeaderCellDef>
-          <mat-checkbox (change)="selectAll($event.checked)"></mat-checkbox>
-        </th>
-        <td mat-cell *matCellDef="let element">
-          <mat-checkbox (change)="selectRow(element)" [checked]="isSelected(element)"></mat-checkbox>
-        </td>
-      </ng-container>
-  
-      <!-- Vessel/Office Column -->
-      <ng-container matColumnDef="vesselOffice">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Vessel/Office</th>
-        <td mat-cell *matCellDef="let element"> {{element.vesselOffice}} </td>
-      </ng-container>
-  
-      <!-- Report Type Column -->
-      <ng-container matColumnDef="reportType">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Report Type</th>
-        <td mat-cell *matCellDef="let element"> {{element.reportType}} </td>
-      </ng-container>
-  
-      <!-- Reference No. Column -->
-      <ng-container matColumnDef="referenceNo">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Reference No.</th>
-        <td mat-cell *matCellDef="let element"> {{element.referenceNo}} </td>
-      </ng-container>
-  
-      <!-- Action Column -->
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-        <td mat-cell *matCellDef="let element">
-          <span [ngClass]="getActionColor(element.action)">
-            {{element.action}}
-          </span>
-        </td>
-      </ng-container>
-  
-      <!-- Action Description Column -->
-      <ng-container matColumnDef="actionDescription">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Action Description</th>
-        <td mat-cell *matCellDef="let element"> {{element.actionDescription}} </td>
-      </ng-container>
-  
-      <!-- Raised On Column -->
-      <ng-container matColumnDef="raisedOn">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Raised On</th>
-        <td mat-cell *matCellDef="let element"> {{element.raisedOn}} </td>
-      </ng-container>
-  
-      <!-- Raised By Column -->
-      <ng-container matColumnDef="raisedBy">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Raised By</th>
-        <td mat-cell *matCellDef="let element"> {{element.raisedBy}} </td>
-      </ng-container>
-  
-      <!-- Due Date Column -->
-      <ng-container matColumnDef="dueDate">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Due Date</th>
-        <td mat-cell *matCellDef="let element"> {{element.dueDate}} </td>
-      </ng-container>
-  
-      <!-- Vessel Respon. Column -->
-      <ng-container matColumnDef="vesselRespon">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Vessel Respon.</th>
-        <td mat-cell *matCellDef="let element"> {{element.vesselRespon}} </td>
-      </ng-container>
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  
-    <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" matSort class="custom-table mat-elevation-z8">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td mat-cell *matCellDef="let employee"> {{ employee.id }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let employee"> {{ employee.name }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+          <td mat-cell *matCellDef="let employee"> {{ employee.date | date:'yyyy-MM-dd' }} </td>
+        </ng-container>
+
+        <thead>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        </thead>
+        <tbody>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </tbody>
+      </table>
+    </div>
+    <mat-paginator [pageSize]="10" showFirstLastButtons class="custom-paginator"></mat-paginator>
   </div>
-  
-  
 </div>

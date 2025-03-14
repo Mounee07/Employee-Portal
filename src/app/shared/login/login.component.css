@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('/assets/logbg.avif') no-repeat center center/cover;
+}
+
+.glass-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 2rem;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.glass-box h2 {
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.glass-box .welcome-text {
+  margin-bottom: 1.5rem;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.glass-box input {
+  width: 89%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 21px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.glass-box input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.glass-box button {
+  width: 89%;
+  padding: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: 21px;
+  cursor: pointer;
+}
+
+.glass-box button:hover {
+  background-color: #d08d8d;
+}
+
+.error-message {
+  color: #ff6b6b;
+  margin-top: 1rem;
+}
+
+.register-link {
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.register-link a {
+  color: white;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}

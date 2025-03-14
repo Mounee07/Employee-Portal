@@ -2,8 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
-import { SharedModule } from './shared/shared.module'; // Assuming you have a shared module
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module'; // Import SharedModule
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EmployeeListingComponent } from './employee-listing/employee-listing.component';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -24,25 +27,32 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { NgApexchartsModule } from "ng-apexcharts";
+import { HttpClientModule } from '@angular/common/http';
 
 // Define the routes
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' }  // Default route
+  { path: 'employee-listing', component: EmployeeListingComponent },
+  { path: 'add-employee', component: AddEmployeeComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' }  // Default route to login
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    EmployeeListingComponent,
+    AddEmployeeComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),  // Add RouterModule here
-    SharedModule,
+    SharedModule,  // Import SharedModule here
     MatPaginatorModule,
     MatSortModule,
     MatTabsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     MatTableModule,
     NgApexchartsModule,
     MatCheckboxModule,

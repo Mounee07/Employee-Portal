@@ -1,0 +1,50 @@
+<app-header></app-header>
+
+<div class="dashboard-container">
+    <app-sidenav></app-sidenav>
+    <div class="dashboard-content">
+        <h2 class="section-title">Add Employees</h2>
+        <div class="employee-form">
+            <form [formGroup]="employeeForm">
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" placeholder="Enter Name" #nameField required maxlength="50" autofocus>
+                    <mat-error *ngIf="employeeForm.get('name')?.invalid && employeeForm.get('name')?.touched">
+                        Name must be max 50 characters
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Contact No</mat-label>
+                    <input matInput formControlName="contact" placeholder="Enter Contact No" maxlength="10" (input)="restrictToNumbers($event)">
+                    <mat-error *ngIf="employeeForm.get('contact')?.invalid && employeeForm.get('contact')?.touched">
+                        Enter a valid 10-digit number
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" placeholder="Enter Email">
+                    <mat-error *ngIf="employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched">
+                        Enter a valid email
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Address</mat-label>
+                    <input matInput formControlName="address" placeholder="Enter Address" maxlength="250">
+                    <mat-error *ngIf="employeeForm.get('address')?.invalid && employeeForm.get('address')?.touched">
+                        Max 250 characters
+                    </mat-error>
+                </mat-form-field>
+
+                <button mat-raised-button color="primary" class="add-btn" 
+                        (click)="addEmployee()" 
+                        [disabled]="employeeForm.invalid"
+                        [ngClass]="{'disabled-btn': employeeForm.invalid}">
+                    Add Employee
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

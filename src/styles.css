@@ -283,7 +283,20 @@ mdc-radio__inner-circle {
   height: 24px; /* Adjust size as needed */
 }
 .logo-icon{
-  width: 114px;
+  width: 42px;
   height: 42px;
-  margin-left: 107px;
+  cursor: pointer;
+  margin-left: 84%;
+}
+.logo-cart{
+  width: 42px;
+  height: 42px;
+}
+.width50{
+  width: 50px;
+}
+.cart-icon {
+  cursor: pointer;
+  font-size: 24px;
+  color: #000; /* Change to desired color */
 }

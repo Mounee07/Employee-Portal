@@ -1,0 +1,23 @@
+<div class="login-container">
+  <div class="glass-box">
+    <h2>LOGIN</h2>
+    <p class="welcome-text">Welcome.</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <div *ngFor="let field of loginForm.controls | keyvalue">
+        <input
+          [type]="field.key === 'password' ? 'password' : 'text'"
+          [formControlName]="field.key"
+          [placeholder]="field.key.charAt(0).toUpperCase() + field.key.slice(1)"
+        />
+      </div>
+
+      <button type="submit">Login</button>
+
+      <!-- Display the error message if validation fails -->
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+    </form>
+
+    <p class="register-link">Don't have an account? <a href="#">Register</a></p>
+  </div>
+</div>
