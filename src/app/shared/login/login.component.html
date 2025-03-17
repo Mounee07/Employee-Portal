@@ -4,17 +4,26 @@
     <p class="welcome-text">Welcome.</p>
 
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-      <div *ngFor="let field of loginForm.controls | keyvalue">
-        <input
-          [type]="field.key === 'password' ? 'password' : 'text'"
-          [formControlName]="field.key"
-          [placeholder]="field.key.charAt(0).toUpperCase() + field.key.slice(1)"
-        />
+      <!-- Username Field -->
+      <div>
+        <input type="text" formControlName="username" placeholder="Username" required />
+        <p class="error-message" *ngIf="loginForm.controls['username'].invalid && loginForm.controls['username'].touched">
+          Username is required (min 3 characters).
+        </p>
       </div>
 
-      <button type="submit">Login</button>
+      <!-- Password Field -->
+      <div>
+        <input type="password" formControlName="password" placeholder="Password" required />
+        <p class="error-message" *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+          Password is required (min 6 characters).
+        </p>
+      </div>
 
-      <!-- Display the error message if validation fails -->
+      <!-- Submit Button -->
+      <button type="submit" [disabled]="loginForm.invalid">Login</button>
+
+      <!-- Error Message for Incorrect Credentials -->
       <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
     </form>
 

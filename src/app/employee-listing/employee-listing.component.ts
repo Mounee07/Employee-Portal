@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { ApiService, Employee } from '../api.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-employee-table',
@@ -13,7 +14,7 @@ export class EmployeeListingComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['name', 'contact', 'email', 'address', 'actions'];
   dataSource = new MatTableDataSource<Employee>([]);
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService,private authService: AuthService) {}
 
   ngOnInit() {
     this.loadEmployeeData();

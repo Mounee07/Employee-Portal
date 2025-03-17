@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,35 +12,37 @@ export class LoginComponent {
   loginForm: FormGroup;
   errorMessage: string = '';
 
-  // Valid credentials
-  private validCredentials = {
-    username: 'emlogin',
-    password: 'emlogin'
-  };
-
-  constructor(private fb: FormBuilder, private router: Router) {
-    // Initializing the form with dynamic fields
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
+      username: ['', [Validators.required, Validators.minLength(3)]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
   onLogin() {
     this.errorMessage = '';
 
+    // Check if form is invalid
     if (this.loginForm.invalid) {
-      this.errorMessage = 'Both fields are required.';
+      this.errorMessage = 'Please fill in all required fields.';
       return;
     }
 
     const { username, password } = this.loginForm.value;
 
-    if (username === this.validCredentials.username && password === this.validCredentials.password) {
-      console.log('Login successful for:', username);
-      this.router.navigate(['/employee-listing']);
-    } else {
-      this.errorMessage = 'Incorrect username or password.';
-    }
+    this.authService.login(username, password).subscribe(
+      (response: any) => {
+        if (response.success) {
+          console.log('Login successful for:', username);
+          localStorage.setItem('userToken', response.token);
+          this.router.navigate(['/employee-listing']);
+        } else {
+          this.errorMessage = 'Incorrect username or password.';
+        }
+      },
+      (error) => {
+        this.errorMessage = 'An error occurred. Please try again.';
+      }
+    );
   }
 }

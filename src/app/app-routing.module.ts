@@ -3,17 +3,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EmployeeListingComponent } from './employee-listing/employee-listing.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { LoginComponent } from './shared/login/login.component'; // Import from shared module
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirect to login on app load
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'employee-listing', component: EmployeeListingComponent },
-  { path: 'add-employee', component: AddEmployeeComponent },
-  { path: '', loadChildren: () => import('./shared/shared.module').then(m => m.SharedModule) }
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent }, // Define login route here
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'add-employee', component: AddEmployeeComponent, canActivate: [AuthGuard] },
+  { path: 'employee-listing', component: EmployeeListingComponent, canActivate: [AuthGuard] },
+  { path: '**', redirectTo: '/login' }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
