@@ -22,7 +22,6 @@ export class LoginComponent {
   onLogin() {
     this.errorMessage = '';
 
-    // Check if form is invalid
     if (this.loginForm.invalid) {
       this.errorMessage = 'Please fill in all required fields.';
       return;
@@ -30,19 +29,20 @@ export class LoginComponent {
 
     const { username, password } = this.loginForm.value;
 
-    this.authService.login(username, password).subscribe(
-      (response: any) => {
-        if (response.success) {
-          console.log('Login successful for:', username);
-          localStorage.setItem('userToken', response.token);
-          this.router.navigate(['/employee-listing']);
+    this.authService.login(username, password).subscribe(response => {
+      if (response.success) {
+        console.log('Login successful for:', username);
+        localStorage.setItem('userToken', 'dummy-jwt-token');
+        localStorage.setItem('userRole', response.role);
+
+        if (response.role === 'admin') {
+          this.router.navigate(['/employee-listing']); // Admin goes to Employee Listing
         } else {
-          this.errorMessage = 'Incorrect username or password.';
+          this.router.navigate(['/edit-employee/view-profile']); // Employee goes to View Profile
         }
-      },
-      (error) => {
-        this.errorMessage = 'An error occurred. Please try again.';
+      } else {
+        this.errorMessage = 'Incorrect username or password.';
       }
-    );
+    });
   }
 }

@@ -29,6 +29,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { HttpClientModule } from '@angular/common/http';
+import { EditEmployeeModule } from './edit-employee/edit-employee.module';
 
 // Define the routes
 const routes: Routes = [
@@ -43,13 +44,14 @@ const routes: Routes = [
     AppComponent,
     DashboardComponent,
     EmployeeListingComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(routes),  // Add RouterModule here
     SharedModule,  // Import SharedModule here
+    EditEmployeeModule,
     MatPaginatorModule,
     MatSortModule,
     MatTabsModule,

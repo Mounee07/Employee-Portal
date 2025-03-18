@@ -1,0 +1,32 @@
+<app-header></app-header>
+
+<div class="dashboard-container">
+    <app-sidenav></app-sidenav>
+    <div class="dashboard-content">
+        <h2 class="section-title">View Employee</h2>
+        <div class="employee-form">
+          <form [formGroup]="employeeForm">
+            <mat-form-field appearance="outline">
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" placeholder="Enter Name" [disabled]="true">
+            </mat-form-field>
+          
+            <mat-form-field appearance="outline">
+              <mat-label>Contact No</mat-label>
+              <input matInput formControlName="contact" placeholder="Enter Contact No" [disabled]="true">
+            </mat-form-field>
+          
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" placeholder="Enter Email" [disabled]="true">
+            </mat-form-field>
+          
+            <mat-form-field appearance="outline">
+              <mat-label>Address</mat-label>
+              <input matInput formControlName="address" placeholder="Enter Address" [disabled]="true">
+            </mat-form-field>
+          </form>
+          
+        </div>
+    </div>
+</div>

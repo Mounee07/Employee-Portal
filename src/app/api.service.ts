@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators'; 
+import { map } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
 export interface Employee {
   id: number;
@@ -36,7 +37,11 @@ export class ApiService {
   getEmployees(): Observable<Employee[]> {
     return this.employeesSubject.asObservable();
   }
-
+  getEmployeeById(id: number): Observable<Employee | undefined> {
+    return this.employeesSubject.asObservable().pipe(
+      map((employees) => employees.find(emp => emp.id === id))
+    );
+  }  
   addEmployee(employee: Employee) {
     employee.id = this.employees.length + 1; 
     this.employees.push(employee);

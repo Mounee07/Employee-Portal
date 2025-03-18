@@ -17,7 +17,7 @@ nav a {
   text-decoration: none;
 }
 
-.nav-icon, .add-icon, .dash-icon {
+.nav-icon, .add-icon, .dash-icon, .viewemp-icon, .edit-icon {
   width: 62px;
   height: 51px;
   object-fit: contain;
@@ -28,7 +28,9 @@ nav a {
 /* Active State */
 nav a.active .nav-icon,
 nav a.active .add-icon,
-nav a.active .dash-icon {
+nav a.active .dash-icon,
+nav a.active .viewemp-icon,
+nav a.active .edit-icon {
   background-color: white; /* Highlight active icon */
   border-radius: 50%; /* Circular shape */
 }
@@ -36,7 +38,9 @@ nav a.active .dash-icon {
 /* Hover State */
 nav a:hover .nav-icon,
 nav a:hover .add-icon,
-nav a:hover .dash-icon {
+nav a:hover .dash-icon,
+nav a:hover .viewemp-icon,
+nav a:hover .edit-icon {
   background-color: rgba(255, 255, 255, 0.1); /* Light hover effect */
   border-radius: 50%;
 }
@@ -52,4 +56,10 @@ nav a:hover .dash-icon {
 
 .dash-icon {
   margin-top: 13px;
+}
+.viewemp-icon{
+  margin-top:80px
+}
+.edit-icon{
+  margin-top:10px
 }

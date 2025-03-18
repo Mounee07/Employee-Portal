@@ -1,13 +1,26 @@
 <aside class="sidenav">
   <nav>
-    <a [routerLink]="'/employee-listing'" [ngClass]="{'active': isActive('/employee-listing')}">
-      <img src="../../../assets/totalep.png" alt="Employee Listing" class="nav-icon">
-    </a>
-    <a [routerLink]="'/add-employee'" [ngClass]="{'active': isActive('/add-employee')}">
-      <img src="../../../assets/addep.png" alt="Add Employee" class="add-icon">
-    </a>
-    <a [routerLink]="'/dashboard'" [ngClass]="{'active': isActive('/dashboard')}">
-      <img src="../../../assets/emplist.png" alt="Dashboard" class="dash-icon">
-    </a>
+    <!-- Show these icons only if the user is an admin -->
+    <ng-container *ngIf="userRole === 'admin'">
+      <a [routerLink]="'/employee-listing'" [ngClass]="{'active': isActive('/employee-listing')}">
+        <img src="../../../assets/totalep.png" alt="Employee Listing" class="nav-icon">
+      </a>
+      <a [routerLink]="'/add-employee'" [ngClass]="{'active': isActive('/add-employee')}">
+        <img src="../../../assets/addep.png" alt="Add Employee" class="add-icon">
+      </a>
+      <a [routerLink]="'/dashboard'" [ngClass]="{'active': isActive('/dashboard')}">
+        <img src="../../../assets/emplist.png" alt="Dashboard" class="dash-icon">
+      </a>
+    </ng-container>
+
+    <!-- Show this icon only if the user is an employee -->
+    <ng-container *ngIf="userRole !== 'admin'">
+      <a [routerLink]="'/view-profile'" [ngClass]="{'active': isActive('/view-profile')}">
+        <img src="../../../assets/viewemp.webp" alt="View profile" class="viewemp-icon">
+      </a>
+      <a [routerLink]="'/edit-profile'" [ngClass]="{'active': isActive('/edit-profile')}">
+        <img src="../../../assets/edit.png" alt="edit profile" class="edit-icon">
+      </a>
+    </ng-container>
   </nav>
 </aside>

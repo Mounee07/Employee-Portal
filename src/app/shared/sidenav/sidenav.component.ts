@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
@@ -8,14 +8,19 @@ import { Router } from '@angular/router';
 })
 export class SidenavComponent {
   activeRoute: string = '';
+  userRole: string | null = '';
 
   constructor(private router: Router) {
-    this.router.events.subscribe(() => {
-      this.activeRoute = this.router.url;
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.activeRoute = this.router.url;
+      }
     });
+
+    this.userRole = localStorage.getItem('userRole'); // Ensure role is stored
   }
 
   isActive(route: string): boolean {
-    return this.activeRoute === route;
+    return this.activeRoute.includes(route); // Use `includes` to match nested routes
   }
 }
